@@ -1,0 +1,7 @@
+{
+  "name": "ionic3-accordion-menu",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

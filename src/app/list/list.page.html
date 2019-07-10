@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      MAP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="map" style="width:100%; height:100%;"></div>
+</ion-content>
+
+<ion-footer style="max-height: 60%">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-title class="item-{{routeInfo.color}}">{{routeName}}</ion-title>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="hideFooter()">{{hideText}}</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-grid class="forecast_titles" [(class.visible)]="show">
+      <ion-row>
+        <ion-col width-20>
+          Vehicle
+        </ion-col>
+        <ion-col width-20>
+          Distance
+        </ion-col>
+        <ion-col width-30>
+          Time
+        </ion-col>
+        <ion-col width-30>
+          (Positive Ramp,Negative Ramp)
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="forecast_container" [(class.visible)]="show">
+      <ion-row>
+        <ion-col>
+          <ion-title class="item-{{routeInfo.color}}">{{routeName}}</ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-row class="item-{{routeInfo.color}}">
+        <ion-col width-20>
+          {{routeInfo.vehicle}}
+        </ion-col>
+        <ion-col width-20>
+          {{round2(routeInfo.dist)}} m
+        </ion-col>
+        <ion-col width-30>
+          {{secondsToTime(routeInfo.cost)}}
+        </ion-col>
+        <ion-col width-30>
+          ({{round2(routeInfo.posRamp)}}m,{{round2(routeInfo.negRamp)}}m)
+        </ion-col>
+    </ion-row>
+    <ng-container *ngFor="let rI of routeInfos" >
+      <ion-row class="grey" [(class.visible)]="rI.marked">
+        <ion-col>
+          <ion-title class="item-{{rI.color}}">{{rI.origen}}-{{routeName}}</ion-title>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="senyala(rI)">Mark</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="item-{{rI.color}}" class="grey" [(class.visible)]="rI.marked">
+        <ion-col width-20>
+          {{rI.vehicle}}
+        </ion-col>
+        <ion-col width-20>
+          {{round2(rI.dist)}} m
+        </ion-col>
+        <ion-col width-30>
+          {{secondsToTime(rI.cost)}}
+        </ion-col>
+        <ion-col width-30>
+          ({{round2(rI.posRamp)}}m,{{round2(rI.negRamp)}}m)
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

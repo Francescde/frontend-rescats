@@ -1,0 +1,36 @@
+.forecast_container{
+  overflow: hidden;
+  display: block;
+  height: 0;
+  &.visible {
+    overflow-y: scroll!important;
+    word-wrap: break-word;
+    height: inherit;
+    max-height: 40vh;
+  }
+}
+
+.forecast_titles{
+  overflow: hidden;
+  display: block;
+  height: 0;
+  &.visible {
+    overflow-y: auto;
+    word-wrap: break-word;
+    height: inherit;
+  }
+
+}
+
+.item-blue{color: blue}
+.item-orange{color: orange}
+.item-yellow{color: yellow}
+.item-green{color: green}
+.item-red{color: red}
+
+.grey{
+  background-color: white!important;
+  &.visible {
+    background-color: gray!important;
+  }
+}

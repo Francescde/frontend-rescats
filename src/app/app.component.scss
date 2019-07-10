@@ -1,0 +1,26 @@
+#sidenav {
+  ion-item-group {
+    overflow: hidden;
+    display: block;
+    height: 0;
+    transition: height .3s linear;
+    &.visible {
+      height: inherit;
+      // this is just sample value, calculate how much space you need for your menu items
+    }
+  }
+}
+
+#sidenav {
+  ion-item[submenu-item] {
+    padding-left: 25px; // maybe margin-left would work better to move the border as well
+    color: #383a3ecc;
+  }
+}
+
+.grey{
+  background-color: white!important;
+  &.visible {
+    background-color: gray!important;
+  }
+}
