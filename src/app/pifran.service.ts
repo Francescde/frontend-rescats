@@ -10,7 +10,7 @@ export class PIFranService {
 
 
   constructor(private http: HttpClient) {}
-
+  apiPath = 'http://127.0.0.1:5000';
 
   getroutes(lat, lon, vehicles) {
     // 41.61449710003&lon=1.84747999968
@@ -22,9 +22,9 @@ export class PIFranService {
         }
         vehiclesStr += vehicles[i];
       }
-      return this.http.get('http://127.0.0.1:5000/calculateRoute?lat=' + lat + '&lon=' + lon + '&vehicles=' + vehiclesStr);
+      return this.http.get(this.apiPath + '/calculateRoute?lat=' + lat + '&lon=' + lon + '&vehicles=' + vehiclesStr);
     } else {
-      return this.http.get('http://127.0.0.1:5000/calculateRoute?lat=' + lat + '&lon=' + lon);
+      return this.http.get(this.apiPath + /calculateRoute?lat=' + lat + '&lon=' + lon);
     }
     /*
     this.http.get('http://127.0.0.1:5000/', {}, {})
